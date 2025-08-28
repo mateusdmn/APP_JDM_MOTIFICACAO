@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDM - Perfil do Usuário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu JDM</h3>
+                <button class="close-sidebar" id="closeSidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+             <ul class="sidebar-menu">
+    <li><a href="app.html"><i class="fas fa-home"></i> Início</a></li>
+    <li><a href="profile.html"><i class="fas fa-user"></i> Perfil</a></li>
+    <li><a href="educational.html"><i class="fas fa-book"></i> Seção Educativa</a></li>
+    <li><a href="about.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+    <li><a href="register_construction.html"><i class="fas fa-building"></i> Cadastro de Obra</a></li>
+    <li><a href="forum.html"><i class="fas fa-comments"></i> Fórum de Dúvidas</a></li>
+    <li><a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a></li>
+    <li><a href="calculator.html"><i class="fas fa-calculator"></i> Cálculo de Materiais</a></li> <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+</ul>
+        </div>
+
+        <div class="main-content" id="mainContent">
+            <header>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <h1>JDM</h1>
+                </div>
+                <div class="user-info">
+                    <span id="userName">Usuário</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+
+            <div class="profile-page-content">
+                <div class="profile-card-modern">
+                    <div class="profile-header-modern">
+                        <button class="back-button-modern" onclick="history.back()"><i class="fas fa-arrow-left"></i></button>
+                        <div class="profile-image-container">
+                            <img src="assets/usuario.jpg" alt="Foto de Perfil" class="profile-image" id="profileImage">
+                            <div class="change-photo-overlay" id="changePhotoOverlay">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <h2 id="profileNameModern">Mateus Dantas Marques Nobrega</h2>
+                        <p class="profile-email" id="profileEmail">mateus@gmail.com</p>
+                    </div>
+
+                    <div class="profile-options-modern">
+                        <a href="#" class="profile-option-item-modern" id="changePhotoBtn">
+                            <i class="fas fa-camera"></i> Alterar Foto
+                        </a>
+                        <a href="#" class="profile-option-item-modern" id="changePasswordBtn">
+                            <i class="fas fa-key"></i> Alterar Senha
+                        </a>
+                        <a href="#" class="profile-option-item-modern" id="changePhoneBtn">
+                            <i class="fas fa-phone"></i> Alterar Telefone
+                        </a>
+                        <a href="#" class="profile-option-item-modern" id="changeEmailBtn">
+                            <i class="fas fa-envelope"></i> Alterar Email
+                        </a>
+                    </div>
+                    
+                    <div class="profile-general-settings">
+                        <h3>Configurações Gerais</h3>
+                        <a href="#" class="profile-option-item-modern" id="generalSettingsBtn">
+                            <i class="fas fa-sliders-h"></i> Preferências
+                        </a>
+                        <a href="#" class="profile-option-item-modern" id="privacySettingsBtn">
+                            <i class="fas fa-shield-alt"></i> Privacidade
+                        </a>
+                    </div>
+
+                    <a href="#" id="logoutProfileBtn" class="profile-logout-btn-modern">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Alterar Foto -->
+    <div id="changePhotoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeChangePhotoModal">&times;</span>
+            <h2>Alterar Foto de Perfil</h2>
+            <div class="form-group">
+                <label for="newPhoto">Selecione uma nova imagem:</label>
+                <input type="file" id="newPhoto" accept="image/*">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelChangePhoto">Cancelar</button>
+                <button class="btn btn-primary" id="savePhoto">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Alterar Senha -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeChangePasswordModal">&times;</span>
+            <h2>Alterar Senha</h2>
+            <div class="form-group">
+                <label for="currentPassword">Senha Atual:</label>
+                <input type="password" id="currentPassword">
+            </div>
+            <div class="form-group">
+                <label for="newPassword">Nova Senha:</label>
+                <input type="password" id="newPassword">
+            </div>
+            <div class="form-group">
+                <label for="confirmNewPassword">Confirmar Nova Senha:</label>
+                <input type="password" id="confirmNewPassword">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelChangePassword">Cancelar</button>
+                <button class="btn btn-primary" id="savePassword">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Alterar Telefone -->
+    <div id="changePhoneModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeChangePhoneModal">&times;</span>
+            <h2>Alterar Telefone</h2>
+            <div class="form-group">
+                <label for="newPhone">Novo Telefone:</label>
+                <input type="tel" id="newPhone" placeholder="(00) 00000-0000">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelChangePhone">Cancelar</button>
+                <button class="btn btn-primary" id="savePhone">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Alterar Email -->
+    <div id="changeEmailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeChangeEmailModal">&times;</span>
+            <h2>Alterar Email</h2>
+            <div class="form-group">
+                <label for="currentEmail">Email Atual:</label>
+                <input type="email" id="currentEmail" disabled>
+            </div>
+            <div class="form-group">
+                <label for="newEmail">Novo Email:</label>
+                <input type="email" id="newEmail">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelChangeEmail">Cancelar</button>
+                <button class="btn btn-primary" id="saveEmail">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Configurações Gerais -->
+    <div id="generalSettingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeGeneralSettingsModal">&times;</span>
+            <h2>Configurações Gerais</h2>
+            <div class="form-group">
+                <label for="languagePreference">Idioma Preferido:</label>
+                <select id="languagePreference" class="form-control">
+                    <option value="pt-BR">Português (Brasil)</option>
+                    <option value="en-US">Inglês (EUA)</option>
+                    <option value="es-ES">Espanhol</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="themePreference">Tema:</label>
+                <select id="themePreference" class="form-control">
+                    <option value="light">Claro</option>
+                    <option value="dark">Escuro</option>
+                    <option value="system">Sistema</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="notificationPreference">Notificações:</label>
+                <select id="notificationPreference" class="form-control">
+                    <option value="enabled">Ativadas</option>
+                    <option value="disabled">Desativadas</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelGeneralSettings">Cancelar</button>
+                <button class="btn btn-primary" id="saveGeneralSettings">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Privacidade -->
+    <div id="privacySettingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closePrivacySettingsModal">&times;</span>
+            <h2>Configurações de Privacidade</h2>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="profileVisibility"> Tornar perfil público
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="activityVisibility"> Mostrar minha atividade
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="dataSharing"> Permitir compartilhamento de dados
+                </label>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelPrivacySettings">Cancelar</button>
+                <button class="btn btn-primary" id="savePrivacySettings">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar dados do usuário
+            const currentUser = JSON.parse(sessionStorage.getItem('jdm_currentUser')) || {
+                name: 'Mateus Dantas Marques Nobrega',
+                email: 'mateus@gmail.com',
+                phone: '',
+                photo: 'assets/usuario.jpg',
+                settings: {
+                    language: 'pt-BR',
+                    theme: 'light',
+                    notifications: 'enabled',
+                    privacy: {
+                        profileVisibility: false,
+                        activityVisibility: true,
+                        dataSharing: false
+                    }
+                }
+            };
+
+            // Atualizar a interface com os dados do usuário
+            document.getElementById('profileNameModern').textContent = currentUser.name;
+            document.getElementById('profileEmail').textContent = currentUser.email;
+            document.getElementById('profileImage').src = currentUser.photo;
+            document.getElementById('userName').textContent = currentUser.name.split(' ')[0]; // Mostrar apenas o primeiro nome no header
+
+            // Elementos dos modais
+            const changePhotoModal = document.getElementById('changePhotoModal');
+            const changePasswordModal = document.getElementById('changePasswordModal');
+            const changePhoneModal = document.getElementById('changePhoneModal');
+            const changeEmailModal = document.getElementById('changeEmailModal');
+            const generalSettingsModal = document.getElementById('generalSettingsModal');
+            const privacySettingsModal = document.getElementById('privacySettingsModal');
+
+            // Botões para abrir os modais
+            document.getElementById('changePhotoBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                changePhotoModal.style.display = 'block';
+            });
+
+            document.getElementById('changePhotoOverlay').addEventListener('click', function(e) {
+                e.preventDefault();
+                changePhotoModal.style.display = 'block';
+            });
+
+            document.getElementById('changePasswordBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                changePasswordModal.style.display = 'block';
+            });
+
+            document.getElementById('changePhoneBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('newPhone').value = currentUser.phone || '';
+                changePhoneModal.style.display = 'block';
+            });
+
+            document.getElementById('changeEmailBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('currentEmail').value = currentUser.email;
+                changeEmailModal.style.display = 'block';
+            });
+
+            document.getElementById('generalSettingsBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Preencher com as configurações atuais
+                document.getElementById('languagePreference').value = currentUser.settings.language;
+                document.getElementById('themePreference').value = currentUser.settings.theme;
+                document.getElementById('notificationPreference').value = currentUser.settings.notifications;
+                generalSettingsModal.style.display = 'block';
+            });
+
+            document.getElementById('privacySettingsBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Preencher com as configurações atuais
+                document.getElementById('profileVisibility').checked = currentUser.settings.privacy.profileVisibility;
+                document.getElementById('activityVisibility').checked = currentUser.settings.privacy.activityVisibility;
+                document.getElementById('dataSharing').checked = currentUser.settings.privacy.dataSharing;
+                privacySettingsModal.style.display = 'block';
+            });
+
+            // Fechar modais quando clicar no X
+            document.getElementById('closeChangePhotoModal').addEventListener('click', function() {
+                changePhotoModal.style.display = 'none';
+            });
+
+            document.getElementById('closeChangePasswordModal').addEventListener('click', function() {
+                changePasswordModal.style.display = 'none';
+            });
+
+            document.getElementById('closeChangePhoneModal').addEventListener('click', function() {
+                changePhoneModal.style.display = 'none';
+            });
+
+            document.getElementById('closeChangeEmailModal').addEventListener('click', function() {
+                changeEmailModal.style.display = 'none';
+            });
+
+            document.getElementById('closeGeneralSettingsModal').addEventListener('click', function() {
+                generalSettingsModal.style.display = 'none';
+            });
+
+            document.getElementById('closePrivacySettingsModal').addEventListener('click', function() {
+                privacySettingsModal.style.display = 'none';
+            });
+
+            // Fechar modais quando clicar no botão Cancelar
+            document.getElementById('cancelChangePhoto').addEventListener('click', function() {
+                changePhotoModal.style.display = 'none';
+            });
+
+            document.getElementById('cancelChangePassword').addEventListener('click', function() {
+                changePasswordModal.style.display = 'none';
+            });
+
+            document.getElementById('cancelChangePhone').addEventListener('click', function() {
+                changePhoneModal.style.display = 'none';
+            });
+
+            document.getElementById('cancelChangeEmail').addEventListener('click', function() {
+                changeEmailModal.style.display = 'none';
+            });
+
+            document.getElementById('cancelGeneralSettings').addEventListener('click', function() {
+                generalSettingsModal.style.display = 'none';
+            });
+
+            document.getElementById('cancelPrivacySettings').addEventListener('click', function() {
+                privacySettingsModal.style.display = 'none';
+            });
+
+            // Fechar modais quando clicar fora do conteúdo
+            window.addEventListener('click', function(event) {
+                if (event.target === changePhotoModal) {
+                    changePhotoModal.style.display = 'none';
+                }
+                if (event.target === changePasswordModal) {
+                    changePasswordModal.style.display = 'none';
+                }
+                if (event.target === changePhoneModal) {
+                    changePhoneModal.style.display = 'none';
+                }
+                if (event.target === changeEmailModal) {
+                    changeEmailModal.style.display = 'none';
+                }
+                if (event.target === generalSettingsModal) {
+                    generalSettingsModal.style.display = 'none';
+                }
+                if (event.target === privacySettingsModal) {
+                    privacySettingsModal.style.display = 'none';
+                }
+            });
+
+            // Salvar foto de perfil
+            document.getElementById('savePhoto').addEventListener('click', function() {
+                const fileInput = document.getElementById('newPhoto');
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('profileImage').src = e.target.result;
+                        currentUser.photo = e.target.result;
+                        sessionStorage.setItem('jdm_currentUser', JSON.stringify(currentUser));
+                        changePhotoModal.style.display = 'none';
+                        alert('Foto de perfil alterada com sucesso!');
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    alert('Por favor, selecione uma imagem.');
+                }
+            });
+
+            // Salvar nova senha
+            document.getElementById('savePassword').addEventListener('click', function() {
+                const currentPassword = document.getElementById('currentPassword').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+                
+                if (!currentPassword || !newPassword || !confirmNewPassword) {
+                    alert('Por favor, preencha todos os campos.');
+                    return;
+                }
+                
+                if (newPassword !== confirmNewPassword) {
+                    alert('As senhas não coincidem.');
+                    return;
+                }
+                
+                // Aqui você normalmente faria uma verificação da senha atual com o servidor
+                // Para este exemplo, vamos apenas simular
+                alert('Senha alterada com sucesso!');
+                changePasswordModal.style.display = 'none';
+                
+                // Limpar os campos
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmNewPassword').value = '';
+            });
+
+            // Salvar novo telefone
+            document.getElementById('savePhone').addEventListener('click', function() {
+                const newPhone = document.getElementById('newPhone').value;
+                
+                if (!newPhone) {
+                    alert('Por favor, insira um número de telefone.');
+                    return;
+                }
+                
+                currentUser.phone = newPhone;
+                sessionStorage.setItem('jdm_currentUser', JSON.stringify(currentUser));
+                alert('Telefone alterado com sucesso!');
+                changePhoneModal.style.display = 'none';
+            });
+
+            // Salvar novo email
+            document.getElementById('saveEmail').addEventListener('click', function() {
+                const newEmail = document.getElementById('newEmail').value;
+                
+                if (!newEmail) {
+                    alert('Por favor, insira um novo email.');
+                    return;
+                }
+                
+                if (!newEmail.includes('@') || !newEmail.includes('.')) {
+                    alert('Por favor, insira um email válido.');
+                    return;
+                }
+                
+                currentUser.email = newEmail;
+                sessionStorage.setItem('jdm_currentUser', JSON.stringify(currentUser));
+                document.getElementById('profileEmail').textContent = newEmail;
+                alert('Email alterado com sucesso!');
+                changeEmailModal.style.display = 'none';
+            });
+
+            // Salvar configurações gerais
+            document.getElementById('saveGeneralSettings').addEventListener('click', function() {
+                currentUser.settings.language = document.getElementById('languagePreference').value;
+                currentUser.settings.theme = document.getElementById('themePreference').value;
+                currentUser.settings.notifications = document.getElementById('notificationPreference').value;
+                
+                sessionStorage.setItem('jdm_currentUser', JSON.stringify(currentUser));
+                alert('Configurações gerais salvas com sucesso!');
+                generalSettingsModal.style.display = 'none';
+                
+                // Aplicar o tema selecionado
+                if (currentUser.settings.theme === 'dark') {
+                    document.body.classList.add('dark-theme');
+                } else {
+                    document.body.classList.remove('dark-theme');
+                }
+            });
+
+            // Salvar configurações de privacidade
+            document.getElementById('savePrivacySettings').addEventListener('click', function() {
+                currentUser.settings.privacy.profileVisibility = document.getElementById('profileVisibility').checked;
+                currentUser.settings.privacy.activityVisibility = document.getElementById('activityVisibility').checked;
+                currentUser.settings.privacy.dataSharing = document.getElementById('dataSharing').checked;
+                
+                sessionStorage.setItem('jdm_currentUser', JSON.stringify(currentUser));
+                alert('Configurações de privacidade salvas com sucesso!');
+                privacySettingsModal.style.display = 'none';
+            });
+
+            // Lógica de logout para o botão na página de perfil
+            const logoutProfileBtn = document.getElementById('logoutProfileBtn');
+            if (logoutProfileBtn) {
+                logoutProfileBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    sessionStorage.removeItem('jdm_currentUser');
+                    window.location.href = 'index.html';
+                });
+            }
+
+            // Máscara para o campo de telefone
+            document.getElementById('newPhone').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) value = value.substring(0, 11);
+                
+                if (value.length > 0) {
+                    value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                    if (value.length > 10) {
+                        value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                    } else {
+                        value = value.replace(/(\d{4})(\d)/, '$1-$2');
+                    }
+                }
+                
+                e.target.value = value;
+            });
+        });
+    </script>
+</body>
+</html>
